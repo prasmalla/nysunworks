@@ -42,7 +42,7 @@ end
 
 group :production do
   # heroku
-  ruby "2.2.3"
+  ruby "2.2.4"
   gem 'rails_12factor'
   gem 'rack-timeout'
   gem 'newrelic_rpm'

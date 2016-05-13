@@ -82,4 +82,4 @@ production:
   <<: *default
   database: <%= "#{ENV['APP_NAME']}_production" %>
   username: <%= "#{ENV['APP_NAME']}" %>
-  password: <%= ENV['RAILSBOOTSTRAPDEVISE_DATABASE_PASSWORD'] %>
+  password: <%= ENV['NYSUNWORKS_DATABASE_PASSWORD'] %>
