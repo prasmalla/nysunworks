@@ -11,10 +11,64 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160207151237) do
+ActiveRecord::Schema.define(version: 20160513211539) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "demographics", force: :cascade do |t|
+    t.integer  "school_id"
+    t.string   "year"
+    t.integer  "total_enrollment"
+    t.integer  "grade_pk"
+    t.integer  "grade_k"
+    t.integer  "grade_1"
+    t.integer  "grade_2"
+    t.integer  "grade_3"
+    t.integer  "grade_4"
+    t.integer  "grade_5"
+    t.integer  "grade_6"
+    t.integer  "grade_7"
+    t.integer  "grade_8"
+    t.integer  "grade_9"
+    t.integer  "grade_10"
+    t.integer  "grade_11"
+    t.integer  "grade_12"
+    t.integer  "female"
+    t.integer  "male"
+    t.integer  "asian"
+    t.integer  "black"
+    t.integer  "hispanic"
+    t.integer  "other"
+    t.integer  "white"
+    t.integer  "students_with_disabilities"
+    t.integer  "english_language_learners"
+    t.integer  "poverty"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  add_index "demographics", ["school_id"], name: "index_demographics_on_school_id", using: :btree
+
+  create_table "schools", force: :cascade do |t|
+    t.string   "ats_system_code"
+    t.string   "location_name"
+    t.string   "beds_number"
+    t.string   "managed_by_name"
+    t.string   "location_category_description"
+    t.datetime "open_date"
+    t.string   "building_code"
+    t.string   "primary_address"
+    t.string   "city"
+    t.string   "state_code"
+    t.integer  "zip"
+    t.string   "principal_name"
+    t.integer  "principal_phone_number"
+    t.integer  "fax_number"
+    t.integer  "geographical_district_code"
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "name",                   default: "", null: false
@@ -45,4 +99,5 @@ ActiveRecord::Schema.define(version: 20160207151237) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["unlock_token"], name: "index_users_on_unlock_token", unique: true, using: :btree
 
+  add_foreign_key "demographics", "schools"
 end

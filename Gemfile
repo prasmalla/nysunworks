@@ -51,3 +51,5 @@ end
 gem 'figaro'
 gem 'puma'
 gem 'devise'
+gem 'roo'
+gem 'roo-xls'
