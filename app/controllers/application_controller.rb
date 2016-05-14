@@ -8,4 +8,12 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.for(:sign_up) << :name
     devise_parameter_sanitizer.for(:account_update) << [:name, :email]
   end
+
+  def authenticate_admin!
+    if current_user && current_user.admin?
+      # fine
+    else
+      redirect_to new_user_session_path
+    end
+  end
 end

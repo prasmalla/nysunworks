@@ -10,7 +10,7 @@ class School < ActiveRecord::Base
     end
     (2..spreadsheet.last_row).each do |i|
       row = Hash[[header, spreadsheet.row(i)].transpose]
-      school = find_by(location_name: row["location_name"]) || new
+      school = find_by(ats_system_code: row["ats_system_code"]) || new
       school.attributes = row.to_hash.slice(*School.attribute_names)
       school.save!
     end

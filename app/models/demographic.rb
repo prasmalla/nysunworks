@@ -14,7 +14,7 @@ class Demographic < ActiveRecord::Base
       row = Hash[[header, spreadsheet.row(i)].transpose]
       demographic = Demographic.new
       demographic.attributes = row.to_hash.slice(*Demographic.attribute_names)
-      demographic.school = School.find_by(location_name: row["school_name"])
+      demographic.school = School.find_by(ats_system_code: row["dbn"])
       demographic.save!
     end
   end

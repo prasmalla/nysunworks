@@ -13,8 +13,8 @@ class CreateSchools < ActiveRecord::Migration
       t.string :state_code
       t.integer :zip
       t.string :principal_name
-      t.integer :principal_phone_number
-      t.integer :fax_number
+      t.string :principal_phone_number
+      t.string :fax_number
       t.integer :geographical_district_code
       t.timestamps null: false
     end
